@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" xmls:th="http:thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title th:text="${title}">Document</title>
 </head>
 <body>
-    <h1 th:text="title"> </h1>
+    <h1 th:text="${title}"> </h1>
     <ul>
-        <li th:text="${nombre}"></li>
-        <li th:text="${apellido}" ></li>
+        <li th:text="${user.nombre}"></li>
+        <li th:text="${user.apellido}" ></li>
     </ul>
 </body>
 </html>

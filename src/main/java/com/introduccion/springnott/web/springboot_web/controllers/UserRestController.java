@@ -1,7 +1,9 @@
 package com.introduccion.springnott.web.springboot_web.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.introduccion.springnott.web.springboot_web.controllers.models.User;
 import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.UserDTO;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -23,4 +27,21 @@ public class UserRestController {
     userDto.setTitle("User Details");
     return userDto;
   }
+  
+  public String getMethodName(@RequestParam String param) {
+      return new String();
+  }
+  @GetMapping("/lista")
+  public List<User> consultarUsurio (){
+    User  user1 = new User("Alfredo", "Sorto");  
+    User  user2 = new User("Ricardo ", "Andrade");
+    User  user3 = new User("Pedro", "Pascal");
+    
+    List<User> listaDeUsuarios =  Arrays.asList(user1, user2, user3);
+    
+    return  listaDeUsuarios ;
+  }
+
+
+
 }

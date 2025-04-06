@@ -9,7 +9,8 @@
     <lu>
      <li th:text="${userDTO.user.nombre}"></li>
      <li th:text="${userDTO.user.Apellido}"></li>
-      <li th:text="${userDTO.title}"></li>  
+      <li th:if="${userDTO.email != null}" th:text="${userDTO.email}"></li>  
+      <li th:if="${userDTO.user.nombre != userDTO.title}" th:text="${'nombre es diferente de  titulo'}"></li>
     </lu>
 
     

@@ -6,11 +6,14 @@ public class UserDTO {
 
     private String title;
     private User user;
+private String email; 
+
     public UserDTO() {
     }
-    public UserDTO(String title, User user) {
+    public UserDTO(String title, User user, String email) {
         this.title = title;
         this.user = user;
+        this.email = email;
     }
     public String getTitle() {
         return title;
@@ -23,6 +26,12 @@ public class UserDTO {
     }
     public void setUser(User user) {
         this.user = user;
+    }
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 

@@ -35,9 +35,9 @@ public String getMethodName(Model model) {
 @GetMapping("/lista")
 public String lista(ModelMap model){
     List<User> user =  Arrays.asList(
-        new User("Ever", "Sorto"),
-        new User("Alfredo", "Gonzalez"),
-        new User("Juan", "Pérez")
+        new User("Ever", "Sorto", "ever@servidor"),
+        new User("Alfredo", "Gonzalez", "alfredo@servidor"),
+        new User("Juan", "Pérez" )
     );
     model.addAttribute("user", user);
     model.addAttribute("title", "Lista de usuarios");

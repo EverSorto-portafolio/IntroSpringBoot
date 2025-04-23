@@ -17,7 +17,8 @@
             <tr th:each="users: ${user}">
                 <td th:text="${users.nombre}"></td>
                 <td th:text="${users.Apellido}"></td>
-                <td th:text="${users.email}"></td>
+                <td th:if="${users.email != null}" th:text="${users.email}"></td>
+                <td th:if="${users.email == null}" th:text="${'--------'}"></td>
             </tr>
         </tbody>
     </table>

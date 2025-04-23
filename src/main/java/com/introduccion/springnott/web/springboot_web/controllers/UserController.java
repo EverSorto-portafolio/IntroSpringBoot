@@ -1,6 +1,7 @@
 package com.introduccion.springnott.web.springboot_web.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -33,8 +34,11 @@ public String getMethodName(Model model) {
 
 @GetMapping("/lista")
 public String lista(ModelMap model){
-    List<User> user = new ArrayList<>();
-    user.add(new User("Ever", "Sorto"));
+    List<User> user =  Arrays.asList(
+        new User("Ever", "Sorto"),
+        new User("Alfredo", "Gonzalez"),
+        new User("Juan", "Pérez")
+    );
     model.addAttribute("user", user);
     model.addAttribute("title", "Lista de usuarios");
     return "lista"; 

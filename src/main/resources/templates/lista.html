@@ -6,8 +6,23 @@
     <title th:text="${title}">Document</title>
 </head>
 <body>
-    <div th:unless="${!user.isEmpty()}" >
-         Hola <span th:text="${user[0].nombre}"></span>
-    </div>
+    <div th:unless="${user.isEmpty()}"></div>
+    <table>
+        <thead>
+            <th>nombre</th>
+            <th> apellido</th>
+            <th> correo </th>
+        </thead>
+        <tbody>
+            <tr th:each="users: ${user}">
+                <td th:text="${users.nombre}"></td>
+                <td th:text="${users.Apellido}"></td>
+                <td th:text="${users.email}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
 </body>
 </html>

@@ -6,8 +6,8 @@
     <title th:text="${title}">Document</title>
 </head>
 <body>
-    <div th:unless="${user.isEmpty()}"></div>
-    <table>
+    <div>
+    <table th:unless="${user.isEmpty()}">
         <thead>
             <th>nombre</th>
             <th> apellido</th>
@@ -22,8 +22,6 @@
             </tr>
         </tbody>
     </table>
-
-
-
+</div>
 </body>
 </html>

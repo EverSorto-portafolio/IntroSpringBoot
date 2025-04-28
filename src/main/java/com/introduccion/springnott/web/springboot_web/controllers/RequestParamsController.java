@@ -11,10 +11,21 @@ import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.Par
 @RequestMapping("/api/params")
 public class RequestParamsController {
     @GetMapping("/foot")
-    public ParamDTO foot(@RequestParam
-    (required = false, defaultValue = "Sin mensaje") String mensaje){
-        ParamDTO param = new ParamDTO(mensaje );
+    public ParamDTO foot(
+        @RequestParam(required = false, defaultValue = "Sin mensaje")String mensaje){
+        ParamDTO param = new ParamDTO(mensaje);
+        param.setMensaje(mensaje);
         return param;
+    }
+
+    @GetMapping("/muchos")
+    public ParamDTO 
+    muchos(
+    @RequestParam( name = "m" , defaultValue= "ningun mensaje") String mensaje,  
+    @RequestParam(name = "d", defaultValue = "ninguna direccion") String direccion)
+    {      
+        ParamDTO params = new ParamDTO(mensaje, direccion);
+        return params;
     }
 
 }

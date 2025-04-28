@@ -3,6 +3,8 @@ package com.introduccion.springnott.web.springboot_web.controllers.models.DTO;
 public class ParamDTO {
 private String mensaje;
 private String direccion;
+private int edad;
+
 
 public ParamDTO() {
     // Constructor por defecto
@@ -27,6 +29,14 @@ public String getDireccion() {
 }
 public void setDireccion(String direccion) {
     this.direccion = direccion;
+}
+public int getEdad() {
+    return edad;
+}
+public ParamDTO(String mensaje, String direccion, int edad) {
+    this.mensaje = mensaje;
+    this.direccion = direccion;
+    this.edad = edad;
 }
 
 }

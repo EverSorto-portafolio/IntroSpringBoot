@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
 import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.ParamDTO;
+import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.UserDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @RequestMapping("/api/params")
@@ -75,5 +79,14 @@ public ParamDTO ejemplo2(
     return param;
 
     }
+
+
+@PostMapping("/usopost")
+public ParamDTO usoRequest (@RequestBody ParamDTO user) {
+    user.setMensaje(user.getMensaje().toUpperCase());
+    user.setDireccion(user.getDireccion().toUpperCase());
+    user.setEdad(user.getEdad() + 1);
+    return user;
+}
 
 }

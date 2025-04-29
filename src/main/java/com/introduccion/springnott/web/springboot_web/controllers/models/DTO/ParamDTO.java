@@ -33,6 +33,9 @@ public void setDireccion(String direccion) {
 public int getEdad() {
     return edad;
 }
+public void setEdad(int edad) {
+    this.edad = edad;
+}
 public ParamDTO(String mensaje, String direccion, int edad) {
     this.mensaje = mensaje;
     this.direccion = direccion;

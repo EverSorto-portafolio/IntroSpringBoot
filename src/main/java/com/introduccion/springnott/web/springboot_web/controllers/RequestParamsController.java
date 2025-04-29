@@ -1,10 +1,12 @@
 package com.introduccion.springnott.web.springboot_web.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
 import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.ParamDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -55,5 +57,23 @@ public ParamDTO errores (HttpServletRequest request) {
     
     
 }
+
+@GetMapping("/ejemplo/{variable}")
+public ParamDTO ejemplo(@PathVariable String variable){
+    ParamDTO param = new ParamDTO();
+    param.setMensaje(variable);
+    return param;
+}
+
+@GetMapping("/ejemplo/{variable}/{variable2}")
+public ParamDTO ejemplo2(
+    @PathVariable String variable, 
+    @PathVariable String variable2){
+    ParamDTO param = new ParamDTO();
+    param.setMensaje(variable);
+    param.setDireccion(variable2);
+    return param;
+
+    }
 
 }

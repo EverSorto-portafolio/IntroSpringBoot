@@ -1,5 +1,9 @@
 package com.introduccion.springnott.web.springboot_web.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +22,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 @RequestMapping("/api/params")
 public class RequestParamsController {
+    @Value("${config.mensaje}")
+    private String mensaje;
+    @Value("${config.direccion}")
+    private String direccion;
+    @Value("${config.edad}")
+    private int edad;
+    @Value("${config.saludo}")
+    private String saludo;
+   // @Value("${config.Arr}")
+   // private String[] lista;
+
+
     @GetMapping("/foot")
     public ParamDTO foot(
         @RequestParam(required = false, defaultValue = "Sin mensaje")String mensaje){
@@ -89,4 +105,15 @@ public ParamDTO usoRequest (@RequestBody ParamDTO user) {
     return user;
 }
 
+@GetMapping("/inyectar")
+public Map<String, Object> inyectar(@Value("${config.Arr}")
+String[] lista){
+ Map<String, Object> json = new HashMap<>();
+    json.put("mensaje", mensaje);
+    json.put("direccion", direccion);
+    json.put("edad", edad);
+    json.put("lista", lista);
+    json.put("saludo", saludo);
+    return json;
+}
 }

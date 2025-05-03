@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource({
-    "classpath:values.properties",
-    "classpath:values2.properties",
-})
+@PropertySource(
+    "classpath:values2.properties")
+ @PropertySource(value="classpath:values.properties",
+  encoding = "UTF-8")
 public class ValuesConfig {
 
 }

@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class RequestParamsController {
     @Value("${config.mensaje}")
     private String mensaje;
-    @Value("${config.direccion}")
+    @Value("#{'${config.direccion}'.toUpperCase()}")
     private String direccion;
     @Value("${config.edad}")
     private int edad;

@@ -128,7 +128,7 @@ String[] lista){
     json.put("mapa", mapa);
    // json.put("env", env.getProperty("config.mapa2"));
     
-    String map2= env.getProperty("config.mapa2");
+    String map2= env.getProperty("config.y");
     json.put("mapa7", map2);
 
     try {

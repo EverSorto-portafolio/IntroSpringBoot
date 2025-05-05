@@ -3,21 +3,26 @@ package com.introduccion.springnott.web.springboot_web.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.deser.impl.CreatorCandidate.Param;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonStringFormatVisitor;
 import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.ParamDTO;
 import com.introduccion.springnott.web.springboot_web.controllers.models.DTO.UserDTO;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController
 @RequestMapping("/api/params")
@@ -30,6 +35,12 @@ public class RequestParamsController {
     private int edad;
     @Value("${config.saludo}")
     private String saludo;
+    @Value("#{${config.mapa}}")
+    private Map<String, Object> mapa;
+    @Autowired
+    private  Environment env;
+
+
    // @Value("${config.Arr}")
    // private String[] lista;
 
@@ -114,6 +125,21 @@ String[] lista){
     json.put("edad", edad);
     json.put("lista", lista);
     json.put("saludo", saludo);
+    json.put("mapa", mapa);
+   // json.put("env", env.getProperty("config.mapa2"));
+    
+    String map2= env.getProperty("config.mapa2");
+    json.put("mapa7", map2);
+
+    try {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Object> jsonMap = mapper.readValue(map2, Map.class);
+        json.put("env", jsonMap);
+    } catch (JsonProcessingException e) {
+        json.put("mapa2", "Error al procesar JSON: " + e.getMessage());
+        e.printStackTrace();
+    }
+
     return json;
 }
 }
